@@ -1,38 +1,52 @@
-import { getOrders, getMetals, getSizes, getStyles } from "./database.js"
+import { getOrders, getMetals, getSizes, getStyles, getJewleries } from "./database.js"
+const metals = getMetals()
+const sizes = getSizes()
+const styles = getStyles()
+const jewleries = getJewleries()
+
 //orders modules initialized. but not invoked once the page is first generated
 const buildOrderListItem = (order) => {
-    const metals = getMetals()
-    const sizes = getSizes()
-    const styles = getStyles()
-
+    
     const foundMetal = metals.find(
         (metal) => {
-            if (metal.id === order.metalId) {
-                return true
-            }
+            return metal.id === order.metalId
         }
     )
     const foundSize = sizes.find(
         (size) => {
-            if (size.id === order.sizeId) {
-                return true
-            }
+            return size.id === order.sizeId
         }
     )
     const foundStyle = styles.find(
         (style) => {
-            if (style.id === order.styleId) {
-                return true
-            }
+            return style.id === order.styleId
+
         }
     )
 
-    const totalCost = (foundMetal.price + foundSize.price + foundStyle.price)
+    const foundJewlery = jewleries.find(
+        (jewlery) => {
+            return jewlery.id === order.jewleryId
+        }
+    )
+
+    let totalCost = foundMetal.price + foundSize.price + foundStyle.price
+
+ if (foundJewlery.id === 1) {
+        totalCost
+
+    } else if (foundJewlery.id === 2) {
+        totalCost *= 2
+
+    } else if (foundJewlery.id === 3) {
+        totalCost *= 4
+    }
 
     const costString = totalCost.toLocaleString("en-US", {
         style: "currency",
         currency: "USD"
     })
+
     return `<li>
         Order #${order.id} cost ${costString}
     </li>`

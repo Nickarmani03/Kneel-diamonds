@@ -15,8 +15,8 @@ document.addEventListener(
 export const DiamondSizes = () => {
     let html = "<ul>"
 
-    // Use .map() for converting objects to <li> elements
-    const listItemsArray = metals.map(   // iterates the array as a parameter of the function. returns an array of strings in a different format
+    // Use .map() for converting objects to <li> elements for example.
+    const listItemsArray = metals.map(   // iterates the array as a parameter of the function. returns an array of strings in a different format. this is a conversion.
         size => {
             return `<li>
                 <input type="radio" name="size" value="${size.id}" /> ${size.carets}

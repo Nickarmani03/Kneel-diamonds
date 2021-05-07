@@ -1,11 +1,21 @@
 /* You need to create the rest of styles for the layout shown */
 
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+  
+}
 .options {
     flex-basis: 24%;
-    margin: 0 2rem;
+    margin: 2rem;
     border: 1px dashed dodgerblue;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    padding-left: .5rem; 
     box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
 }
 
+.choices__jewleries{
+    flex-wrap:nowrap;
+    margin: 2rem;
+    padding-left: .5rem;
+}
